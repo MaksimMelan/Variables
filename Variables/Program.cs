@@ -15,9 +15,9 @@ namespace Variables
             int coordinatesY = -1242352435;
             int coordinatesZ = 134;
             uint distance = 294967295;
-            long ; // незнаю что придумать
-            double; // незнаю что придумать
-            decimal;// незнаю что придумать
+            ulong grams = 1231; // незнаю что придумать
+            double immunityToBreakdown = - 1.56; // незнаю что придумать
+            decimal theInfluenceOfCivilization =  12.89m;// незнаю что придумать
             char yes = 'y';
             string commandOrder = "Capture the airfield";
             object radius = 56.579;
