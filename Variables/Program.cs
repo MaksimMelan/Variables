@@ -8,18 +8,21 @@ namespace Variables
         {
             string name;
             string sity;
-
+            int age;
             Console.WriteLine("Здравствуйте! Как Вас зовут? ");
             name = Console.ReadLine();
+            Console.WriteLine("ВВедите ваш возраст");
+            age =Convert.ToInt32(Console.ReadLine());
 
-            if ( name == "Максим")
+
+            if ( name == "Максим" && age >= 18  )
             {
                 Console.WriteLine("Здравствуйте " + name + "." + "Пройдите пожалуйста проверку");
             }
             else
             {
                 Console.WriteLine("У Вас нет доступа");
-                Console.ReadLine();
+                Main(args);
             }
 
             Console.WriteLine("В каком городе Вы живёте?");
