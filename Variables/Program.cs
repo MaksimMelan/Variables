@@ -6,36 +6,19 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            string day;
+            string password;
             Console.WriteLine("Здравствуёте! Какой сегодня день недели?");
-            day = Console.ReadLine();
+            password = Console.ReadLine();
 
-            
-
-            switch (day)
+            if (password == "EDG1fsdR124B")
             {
-                case "Воскресенье":
-                case "Понедельник":
-                case "Суббота":
-                    Console.WriteLine("идём в кино");
-                    Console.WriteLine("едим попкорн");
-                    break;
-                case "Вторник":
-                    Console.WriteLine("Пройдём курсы");
-                    break;
-                case "Среда":
-                    Console.WriteLine("Изучаем switch");
-                    break;
-                case "Четверг":
-                    Console.WriteLine("проектируем приложение");
-                    break;
-                case "Пятница":
-                    Console.WriteLine("Чиллл");
-                    break;
-                default:
-                    Console.WriteLine("Я такого дня не знаю");
-                    break;
+                Console.WriteLine("Проходите!");
             }
+            else
+            {
+                Console.WriteLine("Вам сюда нельзя");
+            }
+
             Console.ReadLine();
         }
     }
