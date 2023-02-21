@@ -10,12 +10,13 @@ namespace Variables
 
             while(age-- > 0)
             {
-                Console.WriteLine("С днём рождения!");
+                
 
                 if (age == 5)
                 {
-                    break;
+                    continue;
                 }
+                Console.WriteLine( age + "С днём рождения!");
             }
             Console.ReadLine();
         }
