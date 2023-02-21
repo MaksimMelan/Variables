@@ -2,23 +2,15 @@
 
 namespace Variables
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            int age = 10;
-
-            while(age-- > 0)
+            for (int i = 0; i < 10; i++)
             {
-                
-
-                if (age == 5)
-                {
-                    continue;
-                }
-                Console.WriteLine( age + "С днём рождения!");
+                Console.WriteLine(i);
             }
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
