@@ -8,10 +8,9 @@ namespace Variables
         {
             int age = 10;
 
-            while(age > 0)
+            while(age-- > 0)
             {
                 Console.WriteLine("С днём рождения!");
-                age--;
             }
             Console.ReadLine();
         }
