@@ -2,14 +2,30 @@
 
 namespace Variables
 {
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
+            int tryCount = 5;
+            string password = "123456";
+            string userInput;
+
+            for(int i = 0; i < tryCount; i++)
             {
-                Console.WriteLine(i);
+                Console.Write("Введите пароль: ");
+                userInput = Console.ReadLine();
+
+                if(password == userInput)
+                {
+                    Console.WriteLine("Секретики");
+                }
+                else
+                {
+                    Console.WriteLine("У Вас осталось - " + (tryCount - i - 1) + " попытки.");
+                }
             }
+
+
             Console.ReadKey();
         }
     }
