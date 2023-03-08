@@ -18,10 +18,11 @@ namespace Variables
                 if(password == userInput)
                 {
                     Console.WriteLine("Секретики");
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("У Вас осталось - " + (tryCount - i - 1) + " попытки.");
+                    Console.WriteLine("У Вас осталось - " + (tryCount - i - 1) + " попыт.");
                 }
             }
 
