@@ -6,24 +6,30 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            float money;
-            int years;
-            int percent;
+            int[] array = new int[10];//сейчас весь массив заполнен нулями.
 
-            Console.Write("Введите кол-во денег на вклад:");
-            money = Convert.ToSingle(Console.ReadLine());
-            Console.Write("На сколько лет открыт вклад: ");
-            years = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Под какой процент: ");
-            percent = Convert.ToInt32(Console.ReadLine());
+            // вариант как проверить ячейку в массиве
+            Console.WriteLine(array[0]); //обращаемся к первой ячейке массива она под цифрой 0,
+            Console.WriteLine(array[1]); //таким образом можно перербрать весь массив.
 
-            for (int i = 0; i < years; i++)
+            // но можно использовать цикл for. Но в этом случае можно не использованть данные о количестве ячеек в массиве,
+            // так как эти данные могут изменится. их можно использовать но не нужно.
+            // для этого существует операция оперделения длинны (размерность) массива "array.Length"
+
+            Console.WriteLine(array.Length);// вывод длинны для примера.
+
+            // как заполнить массив?
+            array[0] = 5; // записали значдение 5 в первую ячейку под номером 0. но это не удобно заполнять каждую ячейку в ручную.
+
+            // можно заполнить массив рандомными числами.
+            Random rand = new Random();
+
+            for(int i = 0; i < array.Length; i++)
             {
-                money += money / 100 * percent;
-                Console.WriteLine("В этом году у вас - " + money);
-                Console.ReadKey();
-
+                array[i] = rand.Next(0, 100);
+                Console.Write(array[i] + ", "); //добавляем пробеля в кавычках, чтоб цифры не выглядели слипшимися.
             }
+            Console.ReadKey();
         }
     }
 }
