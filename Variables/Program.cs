@@ -6,28 +6,24 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            int tryCount = 5;
-            string password = "123456";
-            string userInput;
+            float money;
+            int years;
+            int percent;
 
-            for(int i = 0; i < tryCount; i++)
+            Console.Write("Введите кол-во денег на вклад:");
+            money = Convert.ToSingle(Console.ReadLine());
+            Console.Write("На сколько лет открыт вклад: ");
+            years = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Под какой процент: ");
+            percent = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < years; i++)
             {
-                Console.Write("Введите пароль: ");
-                userInput = Console.ReadLine();
+                money += money / 100 * percent;
+                Console.WriteLine("В этом году у вас - " + money);
+                Console.ReadKey();
 
-                if(password == userInput)
-                {
-                    Console.WriteLine("Секретики");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("У Вас осталось - " + (tryCount - i - 1) + " попыт.");
-                }
             }
-
-
-            Console.ReadKey();
         }
     }
 }
