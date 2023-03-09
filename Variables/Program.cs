@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
+using System.Xml.Linq;
 
 namespace Variables
 {
@@ -7,22 +8,24 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            // массив int-ов под названием array с небольшим количеством элмементов.
-            //запомнить сумму всех элементов массива
-            int[] array = { 1, 4, 6, 2, 8, 10 };
-            int sum = 0;// изначально должна быть равна нулю, для этого нужно
-                        // инициализировать переменную с 0, иначе там даже нуля не будет.
-
-            for (int i = 0; i < array.Length; i++) // от нуля, до тех пор пока i будет
-                                                   // меньше чем array.Length; i увеличиваем на единицу.
+            // найти наибольшее число в массиве.
+            int[] array = { 1, 5, 3, 4, 8, 16, 28 };
+            int maxElement =0;// создаём переменную - максимальный элемент.
+            
+            for (int i = 0; i < array.Length; i++)// начинаем перебирать эемементы массива.
             {
-               sum += array[i];//вывод "Console.WriteLine" убираем, нам нужна только
-                               //ячейка. Мы обращаемся к ячейке и её к себе записываем.
-               Console.WriteLine(sum);//выводим результат каждого сложения для контроля.
+                // ели максЭлемент меньше элмемента массива - значит максЭлмент равняется Элмемент равняется элементу массива.
+                if(maxElement < array[i])
+                {
+                    maxElement = array[i];
+                    Console.WriteLine(maxElement);
+                }
+                else
+                {
+                    Console.WriteLine(maxElement);
+                }
             }
-            Console.WriteLine(sum);
-
-
+            Console.WriteLine("наибольшее число в массиве: " + maxElement);
             Console.ReadKey();
         }
     }
