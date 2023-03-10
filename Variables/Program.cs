@@ -8,29 +8,50 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            // найти наибольшее число в массиве.
-            int[] array = { 1, 5, 3, 4, 8, 16, 28 };
-            int maxElement = int.MinValue;// создаём переменную - максимальный элемент.
-                               // Переменной 0 может не быть и не существоивать,или другие проблемы...
-                               // в место нуля можно поставить константу типа int (или другого типа данных)
-                               // - минимально возмножную или максимально возможную для этого типа 
-                               // в звависичиости от условий. пишем "int." и выбираем константу.
-
-            
-            for (int i = 0; i < array.Length; i++)// начинаем перебирать эемементы массива.
+            // система брони столов. мой вариант бронирования case 2.
+            bool isOpen = true;
+            int[] tables = {1, 2, 3, 4, 5, 6, 7, 8, 9 }; // указан не номер стола, а количесвто место за столом.
+            int userInput;
+            int userInput2;
+            // чтоб система не заканчивалась как, кто-то всё забронирует, создадим вечный цикл while
+            while (true) // пока кто-то работает - мы делаем. 
             {
-                // ели максЭлемент меньше элмемента массива - значит максЭлмент равняется Элмемент равняется элементу массива.
-                if(maxElement < array[i])
+               
+                // вступление
+                Console.WriteLine("1 - вывесит список столов.\n2 - забронировать место.\n3 - выход из программы");
+
+                switch (Convert.ToInt32(Console.ReadLine()))
                 {
-                    maxElement = array[i];
-                    Console.WriteLine(maxElement);
+                    case 1:
+                        for (int i = 0; i < tables.Length; i++)//Сначала выведем все столы
+                        {
+                            Console.WriteLine("За столом - " + (i + 1) + " свободно " + tables[i] + " мест.");
+                            // i + 1 делаем для того чтоб нумерация стовлов показывалась как удобно пользователю - не с 0, а с 1.
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Введите номер стола: ");
+                        userInput = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Выбран стол №" + userInput);
+                        Console.WriteLine("Введите количество бронируемых мест: ");
+                        userInput2 = Convert.ToInt32(Console.ReadLine());
+                        tables[(userInput -1)] = userInput2;
+                        Console.WriteLine("Забронирован стол №" + userInput + "\nЗабронированно " + userInput2 + " мест.");
+                        for(int i = 0; i < tables.Length; i++)// выводим столы заного для проверки.
+                        {
+                            Console.WriteLine("За столом - " + (i + 1) + " свободно " + tables[i] + " мест.");
+                            // i + 1 делаем для того чтоб нумерация стовлов показывалась как удобно пользователю - не с 0, а с 1.
+                        }
+                        break;
+                    case 3:
+                        isOpen = false;
+                        break;//мы не можем в таком варианте указать break второй раз - чтоб показать выход из программы
+                              // добавляем isOpen (открыто заведение или закрыто.
+
                 }
-                else
-                {
-                    Console.WriteLine(maxElement);
-                }
+                
             }
-            Console.WriteLine("наибольшее число в массиве: " + maxElement);
+
             Console.ReadKey();
         }
     }
