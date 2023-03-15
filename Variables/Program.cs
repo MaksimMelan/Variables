@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Variables
 {
@@ -8,16 +9,22 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            int num1 = 0;
+            double deposit = 0; 
             
 
-            Console.WriteLine("Ведите первое число: ");
-            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ведите сумму вклада: ");
+             deposit = Convert.ToDouble(Console.ReadLine());
 
-            if (num1 > 5 && num1 < 10)
-                Console.WriteLine("Число больше 5 и меньше 10");
+        M:
+            if (deposit < 100)
+                deposit += deposit * 0.05;
+            else if (deposit <= 200)
+                deposit += deposit * 0.05;
             else
-                Console.WriteLine("Неизвестное число!");
+                deposit += deposit * 0.05;
+
+            Console.WriteLine($"Сумма вклада после начисления  равна: {deposit}");
+
             Console.ReadKey();
         }
     }
