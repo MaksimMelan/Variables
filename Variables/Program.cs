@@ -18,10 +18,10 @@ namespace Variables
         M:
             if (deposit < 100)
                 deposit += deposit * 0.05;
-            else if (deposit <= 200)
+            else if (deposit < 200)
                 deposit += deposit * 0.07;
             else
-                deposit += deposit * 0.1;
+                deposit += deposit * 0.10;
 
             Console.WriteLine($"Сумма вклада после начисления  равна: {deposit + 15}");
 
