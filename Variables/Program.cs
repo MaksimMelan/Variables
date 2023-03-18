@@ -31,7 +31,20 @@ namespace Variables
                     Console.Write(cucumbers[i] + ", ");
                 }
             }
+            Console.WriteLine();
 
+            // оперделение максимвального элемента в массиве
+            int maxElement = int.MinValue;
+
+            for (int i = 0; i < cucumbers.Length; i++)
+            {
+                if(maxElement < cucumbers[i])
+                {
+                    maxElement = cucumbers[i];
+                    
+                }
+            }
+            Console.WriteLine("\nМаксимальное значение " + maxElement);
 
             Console.ReadKey();
         }
