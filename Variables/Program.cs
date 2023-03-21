@@ -9,46 +9,71 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
-            int sizeArrey = random.Next(0, 51);
-            int[] cucumbers = new int[sizeArrey]; // размер массива 10, но каждый элемент массива == 0
-            //Console.WriteLine(cucumbers[0]);// обращаемся к первой банке и спрашиваем, что у неё  внутри.
-                                            // мерез имя массива и номер ячейки мы можем обратится к конкертному элементу массива.
-                                            // это похоже на однотипное действие которое повторяется вновь и вновь.
-                                            // значит тут можно использовать массив, так как нам изветсны условия и кол-во то используем for
+            // программа отвечающая за регистрацию пассажиров на рейс самолёта.
+            int[] sectors = { 6, 28, 15, 15, 17 };
+            bool isOpen = true;
 
+            // чтоб  программа не закрывалась после каждого нашего действия используем цикл while.
             
-            Console.WriteLine(cucumbers.Length + 1);
-            for (int i = 0; i < cucumbers.Length; i++)
+            while (isOpen)
             {
-                cucumbers[i] = random.Next(0, 101);
-            }
-            Console.WriteLine();
-            for (int i = 0; i < cucumbers.Length; i++)
-            {
-                if(cucumbers[i] % 2 == 0)
+                Console.SetCursorPosition(0, 10);
+                for (int i = 0; i < sectors.Length; i++)
                 {
-                    Console.Write(cucumbers[i] + ", ");
+                    Console.WriteLine($"В секторе {i + 1} свободно {sectors[i]} мест.");
+
+
                 }
-            }
-            Console.WriteLine();
 
-            // оперделение максимвального элемента в массиве
-            int maxElement = int.MinValue;
-
-            for (int i = 0; i < cucumbers.Length; i++)
-            {
-                if(maxElement < cucumbers[i])
+                Console.SetCursorPosition(0, 0); //местопоявления тектса который дан ниже
+                Console.WriteLine("Регистраци рейса.");
+                Console.WriteLine("\n1 - Забронированные места.\n\n2 - Выход из программы.");
+                Console.Write("Введите номер команды: ");
+                switch (Convert.ToInt32(Console.ReadLine()))
                 {
-                    maxElement = cucumbers[i];
-                    
+                    case 1:
+                        int userSector, userPlaceAmount;
+                        Console.Write("В каком секторе вы хотите лететь? ");
+                        userSector = Convert.ToInt32(Console.ReadLine()) -1; // при выюоре сектора пользователем мы ставим 
+                        if(sectors.Length <= userSector || userSector < 0)// Кол-во секторов которое ввсёл админ, меньше или равно, кол-ву секторов.
+                                                                          // Или меньше нуля.
+                        {
+                            Console.WriteLine("Такого сектора не существует.");
+                            break;
+                        }
+                        Console.Write("Сколько вы хотите забронировать? ");
+                        userPlaceAmount = Convert.ToInt32(Console.ReadLine());
+                        if(userPlaceAmount < 0)
+                        {
+                            Console.WriteLine("Не верное количество мест. ");
+                            break;
+                        }
+                        if (sectors[userSector] < userPlaceAmount) 
+                        {
+                            Console.WriteLine($"В секторе {userSector} недостаточно мест. " + $"Остаток {sectors[userSector]}");
+                            break;
+                        }
+                        // Если значения введённые администратором прошли все проверки,
+                        // мы у сектора который ввёл наш клиен вычитаем количество мест которое желал клиент
+
+                        sectors[userSector] -= userPlaceAmount;
+                        Console.WriteLine("Бронирование успешно!");
+                        break;
+                    case 2:
+                        isOpen = false;
+                        break;
+
                 }
+
+
+                Console.ReadKey(); // обновление списка по нажатию клавиши. вместо непрерывного цикла.
+                Console.Clear();
             }
-            Console.WriteLine("\nМаксимальное значение " + maxElement);
+
 
             Console.ReadKey();
         }
-            
-        
+
+
     }
 }
