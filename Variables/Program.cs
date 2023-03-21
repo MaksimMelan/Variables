@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Security.Principal;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -9,69 +10,46 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            // программа отвечающая за регистрацию пассажиров на рейс самолёта.
-            int[] sectors = { 6, 28, 15, 15, 17 };
-            bool isOpen = true;
+            /* объявление многомерного массива - массивы которые используют больше одного измерения
+             *чаще всего будем использовать одномерные массивы.
+             *каждый элемент массива  имеет два индекса [первый определяет элемент массива, а второй стольбца].
+             *на пересецении значений индексов находятся элементы массива. как в игре "Морской бой".
+             *Многомерный массив это стелаж с полками и банками.
+             *У элементов многомерного массива доолжен быть одинаковый тип и они все объеденены одним именем.
+             */
 
-            // чтоб  программа не закрывалась после каждого нашего действия используем цикл while.
+            int[,] array; // объявление двухмерного массива тип в квадратных скобках запятая, название массива
+            int[,] array2 = new int[3, 5]; //инициализация массива - пишем new тип массива и [размер, массива]
             
-            while (isOpen)
+            int[,] array3 = {
+                { 2, 3, 4 },
+                { 4, 5, 4 }, 
+                { 3, 4, 5 }
+            };
+
+            //Console.WriteLine(array4[2, 2]);
+
+            //Console.WriteLine(array3.Length); 
+            /* в этом случае выводится сумма всех элементов массива а не их значение
+             * или сколько элементов в каждом ряду или столбце. 
+             * Если в for мы будем работать через значение Length
+             * то будет  выдватся ошибка  что мы вышли а пределы массива. 
+             * чтоб этого избежать была создана конструкция GetLength
+             */
+            int[,] array4 = new int[5, 5];
+            Random rand = new Random();
+
+            for (int i = 0; i < array4.GetLength(0); i++) // индекс первого измерения - строк
             {
-                Console.SetCursorPosition(0, 10);
-                for (int i = 0; i < sectors.Length; i++)
+                for (int j = 0; j < array4.GetLength(1); j++) // индекс второго измерения - столбцы [0, 1]
                 {
-                    Console.WriteLine($"В секторе {i + 1} свободно {sectors[i]} мест.");
-
-
+                    array4[i, j] = rand.Next(0, 10); // заполняем рандомными значениями всеь двуменрый массив
+                    Console.Write(array4[i, j] + "  ");
                 }
-
-                Console.SetCursorPosition(0, 0); //местопоявления тектса который дан ниже
-                Console.WriteLine("Регистраци рейса.");
-                Console.WriteLine("\n1 - Забронированные места.\n\n2 - Выход из программы.");
-                Console.Write("Введите номер команды: ");
-                switch (Convert.ToInt32(Console.ReadLine()))
-                {
-                    case 1:
-                        int userSector, userPlaceAmount;
-                        Console.Write("В каком секторе вы хотите лететь? ");
-                        userSector = Convert.ToInt32(Console.ReadLine()) -1; // при выюоре сектора пользователем мы ставим 
-                        if(sectors.Length <= userSector || userSector < 0)// Кол-во секторов которое ввсёл админ, меньше или равно, кол-ву секторов.
-                                                                          // Или меньше нуля.
-                        {
-                            Console.WriteLine("Такого сектора не существует.");
-                            break;
-                        }
-                        Console.Write("Сколько вы хотите забронировать? ");
-                        userPlaceAmount = Convert.ToInt32(Console.ReadLine());
-                        if(userPlaceAmount < 0)
-                        {
-                            Console.WriteLine("Не верное количество мест. ");
-                            break;
-                        }
-                        if (sectors[userSector] < userPlaceAmount) 
-                        {
-                            Console.WriteLine($"В секторе {userSector} недостаточно мест. " + $"Остаток {sectors[userSector]}");
-                            break;
-                        }
-                        // Если значения введённые администратором прошли все проверки,
-                        // мы у сектора который ввёл наш клиен вычитаем количество мест которое желал клиент
-
-                        sectors[userSector] -= userPlaceAmount;
-                        Console.WriteLine("Бронирование успешно!");
-                        break;
-                    case 2:
-                        isOpen = false;
-                        break;
-
-                }
-
-
-                Console.ReadKey(); // обновление списка по нажатию клавиши. вместо непрерывного цикла.
-                Console.Clear();
+                Console.WriteLine();
             }
-
-
             Console.ReadKey();
+                        
         }
 
 
