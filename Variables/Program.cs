@@ -10,48 +10,44 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            /* объявление многомерного массива - массивы которые используют больше одного измерения
-             *чаще всего будем использовать одномерные массивы.
-             *каждый элемент массива  имеет два индекса [первый определяет элемент массива, а второй стольбца].
-             *на пересецении значений индексов находятся элементы массива. как в игре "Морской бой".
-             *Многомерный массив это стелаж с полками и банками.
-             *У элементов многомерного массива доолжен быть одинаковый тип и они все объеденены одним именем.
-             */
-
-            int[,] array; // объявление двухмерного массива тип в квадратных скобках запятая, название массива
-            int[,] array2 = new int[3, 5]; //инициализация массива - пишем new тип массива и [размер, массива]
-            
-            int[,] array3 = {
-                { 2, 3, 4 },
-                { 4, 5, 4 }, 
-                { 3, 4, 5 }
-            };
-
-            //Console.WriteLine(array4[2, 2]);
-
-            //Console.WriteLine(array3.Length); 
-            /* в этом случае выводится сумма всех элементов массива а не их значение
-             * или сколько элементов в каждом ряду или столбце. 
-             * Если в for мы будем работать через значение Length
-             * то будет  выдватся ошибка  что мы вышли а пределы массива. 
-             * чтоб этого избежать была создана конструкция GetLength
-             */
-            int[,] array4 = new int[5, 5];
-            Random rand = new Random();
-
-            for (int i = 0; i < array4.GetLength(0); i++) // индекс первого измерения - строк
+            //массив - ссылочный тип
+            //int[] array = new int[5];
+            //int[] array2 = new int[3];
+            //array[0] = 5; // изменяем у массива нулевой  элемент на 5 - это 0 (первый) стал содержать 5
+            //array = array2; // После инициализации от одного массива до другого, мы передаём ссылку на память.
+            // после этого они пользуются одой памятью для обоих, изменение данных в одном массиве, приведеёт к изменениям данных в другом.
+            //Console.WriteLine(array2[0]);
+            //Console.ReadKey();
+            int[] petrovich = new int[3];
+            int[] ivanovich = new int[5];
+            int[] sidorovich;
+            petrovich = ivanovich;
+            // после того как petrovich = ivanovich,  они оба ссылаются  область паяти ivanovich,
+            // а предыдущая область пмяти petrovich  сгорает.  Её большене верноуть                    
+            petrovich[0] = 5;
+            ivanovich[1] = 3;
+            sidorovich = ivanovich;
+            Console.WriteLine(sidorovich[0]);
+            Console.WriteLine(sidorovich[1]);
+            for (int i = 0; i < petrovich.Length; i++)
             {
-                for (int j = 0; j < array4.GetLength(1); j++) // индекс второго измерения - столбцы [0, 1]
-                {
-                    array4[i, j] = rand.Next(0, 10); // заполняем рандомными значениями всеь двуменрый массив
-                    Console.Write(array4[i, j] + "  ");
-                }
-                Console.WriteLine();
+                Console.WriteLine("petrovich " + petrovich[i]);
+            }
+            for (int i = 0; i < ivanovich.Length; i++)
+            {
+                Console.WriteLine("ivanovich " + ivanovich[i]);
+            }
+            for (int i = 0; i < sidorovich.Length; i++)
+            {
+                Console.WriteLine("sidorovich " + sidorovich[i]);               
+            }       
+            // петрович остновал новый гараж на 10 вещей вместимостью, и ушол из старого.
+            petrovich = new int[10];
+            for (int i = 0; i < petrovich.Length; i++)
+            {
+                Console.WriteLine("petrovich " + petrovich[i]);                
             }
             Console.ReadKey();
-                        
         }
-
-
     }
 }
