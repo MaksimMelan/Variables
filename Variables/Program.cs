@@ -10,15 +10,33 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            int paintings = 52;
-            int inRowPaintings = 3;
-            int countOfRows = paintings / inRowPaintings;
-            int remainderOfPaintings = paintings % inRowPaintings;
-            Console.WriteLine("Количесвто книг: " + paintings);
-            Console.WriteLine("Сколько картин в ряд: " + inRowPaintings);
-            Console.WriteLine("Сколько полсностью заполненных рядов: " + countOfRows);
-            Console.WriteLine("Картинок сверх меры: " + remainderOfPaintings);
+            string firstName = "Максимов ";
+            string lastName = "Максим";
+            string clipboard;
+           
+            Console.WriteLine($"Неправильно заполнены данные:\nИмя - {firstName}, фамилия - {lastName} ");
+            Console.WriteLine("Нажмите любую клавишу чтобы поменять их местами.");
             Console.ReadKey();
+
+            clipboard = firstName;
+            firstName = lastName;
+            lastName = clipboard;
+
+            Console.WriteLine($"Данные поменялись местами.\nИмя - {firstName}, фамилия - {lastName} ");
+            Console.ReadKey ();
+
+            /* 
+             * //можно ли пользоваатся второй способом? какие могут быть проблемы? Мне кажется так наглядней?
+            Console.WriteLine("Второй способ");
+            Console.WriteLine($"Неправильно заполнены данные имя - {firstName}, фамилия - {lastName} ");
+            Console.WriteLine("Нажмите любую клавишу чтобы поменять их местами.");
+            Console.ReadKey();
+
+            (firstName, lastName) = (lastName, firstName); // 
+
+            Console.WriteLine($"Второй способ - проверка:\nИмя - {firstName}, фамилия - {lastName} ");
+            Console.ReadKey();
+            */
         }
     }
 }
