@@ -10,33 +10,21 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            string firstName = "Максимов ";
-            string lastName = "Максим";
-            string clipboard;
-           
-            Console.WriteLine($"Неправильно заполнены данные:\nИмя - {firstName}, фамилия - {lastName} ");
-            Console.WriteLine("Нажмите любую клавишу чтобы поменять их местами.");
+            int gold = 0;
+            int crystalsCount = 0;
+            int crystalPrice = 70;
+
+            Console.WriteLine("Добро пожаловать в магазин кристалов!\n" +
+                "Сегодня кристалы по 70 золотых манет.");
+            Console.WriteLine("Сколько у вас золота?");
+        gold = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Сколько кристалов Вам нужно:");
+            crystalsCount = Convert.ToInt32(Console.ReadLine());
+
+        gold -= crystalsCount * crystalPrice;
+
+            Console.WriteLine($"У в {gold} золота и {crystalsCount} кристалов ");
             Console.ReadKey();
-
-            clipboard = firstName;
-            firstName = lastName;
-            lastName = clipboard;
-
-            Console.WriteLine($"Данные поменялись местами.\nИмя - {firstName}, фамилия - {lastName} ");
-            Console.ReadKey ();
-
-            /* 
-             * //можно ли пользоваатся второй способом? какие могут быть проблемы? Мне кажется так наглядней?
-            Console.WriteLine("Второй способ");
-            Console.WriteLine($"Неправильно заполнены данные имя - {firstName}, фамилия - {lastName} ");
-            Console.WriteLine("Нажмите любую клавишу чтобы поменять их местами.");
-            Console.ReadKey();
-
-            (firstName, lastName) = (lastName, firstName); // 
-
-            Console.WriteLine($"Второй способ - проверка:\nИмя - {firstName}, фамилия - {lastName} ");
-            Console.ReadKey();
-            */
         }
     }
 }
