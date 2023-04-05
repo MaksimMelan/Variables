@@ -15,13 +15,13 @@ namespace Variables
             int crystalPrice = 70;
 
             Console.WriteLine("Добро пожаловать в магазин кристалов!\n" +
-                "Сегодня кристалы по 70 золотых манет.");
+                $"Сегодня кристалы по {crystalPrice} золотых манет.");
             Console.WriteLine("Сколько у вас золота?");
-        gold = Convert.ToInt32(Console.ReadLine());
+            gold = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Сколько кристалов Вам нужно:");
             crystalsCount = Convert.ToInt32(Console.ReadLine());
 
-        gold -= crystalsCount * crystalPrice;
+            gold -= crystalsCount * crystalPrice;
 
             Console.WriteLine($"У в {gold} золота и {crystalsCount} кристалов ");
             Console.ReadKey();
