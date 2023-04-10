@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Security.Principal;
 using System.Xml.Linq;
@@ -10,21 +11,23 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            int gold = 0;
-            int crystalsCount = 0;
-            int crystalPrice = 70;
+            int personQueue = 0;
+            int timeOne = 10;
+            int hours = 0;
+            int minutes = 0;
+            while (true)
+            { 
+                Console.WriteLine("Здравствуйте!\nВведите число человек в очереди");
+                personQueue = Convert.ToInt32(Console.ReadLine());
+                hours = (personQueue * timeOne) / 60;
+                minutes = (personQueue * timeOne) % 60;
+                Console.WriteLine($"Время ожидания в очереди составит часов {hours} и {minutes} минут.");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            
 
-            Console.WriteLine("Добро пожаловать в магазин кристалов!\n" +
-                $"Сегодня кристалы по {crystalPrice} золотых манет.");
-            Console.WriteLine("Сколько у вас золота?");
-            gold = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Сколько кристалов Вам нужно:");
-            crystalsCount = Convert.ToInt32(Console.ReadLine());
-
-            gold -= crystalsCount * crystalPrice;
-
-            Console.WriteLine($"У в {gold} золота и {crystalsCount} кристалов ");
-            Console.ReadKey();
+            
         }
     }
 }
