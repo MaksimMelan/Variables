@@ -11,8 +11,10 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            int personQueue = 0;
             int timeOne = 10;
+            int minutesInHours = 60;
+
+            int personQueue = 0;
             int hours = 0;
             int minutes = 0;
 
@@ -21,8 +23,8 @@ namespace Variables
                 Console.WriteLine("Здравствуйте!\nВведите число человек в очереди");
                 personQueue = Convert.ToInt32(Console.ReadLine());
 
-                hours = (personQueue * timeOne) / 60;
-                minutes = (personQueue * timeOne) % 60;
+                hours = (personQueue * timeOne) / minutesInHours;
+                minutes = (personQueue * timeOne) % minutesInHours;
 
                 Console.WriteLine($"Время ожидания в очереди составит часов {hours} и {minutes} минут.");
                 Console.ReadKey();
