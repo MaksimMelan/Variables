@@ -14,19 +14,21 @@ namespace Variables
             int fixedAppointmentTime = 10;
             int minutesInHours = 60;
 
-            int personQueue;
-            int hours = 0;
-            int minutes = 0;
+            int personInQueue;
+            int wholeHours;
+            int remainingMinutes;
+            int quantityMinutes;
 
             Console.WriteLine("Здравствуйте!\nВведите число человек в очереди");
-            personQueue = Convert.ToInt32(Console.ReadLine());
+            personInQueue = Convert.ToInt32(Console.ReadLine());
 
-            hours = (personQueue * fixedAppointmentTime) / minutesInHours;
-            minutes = (personQueue * fixedAppointmentTime) % minutesInHours;
+            quantityMinutes = personInQueue * fixedAppointmentTime;
+            wholeHours = quantityMinutes / minutesInHours;
+            remainingMinutes = quantityMinutes % minutesInHours;
 
-            Console.WriteLine($"Время ожидания в очереди составит часов {hours} и {minutes} минут.");
+            Console.WriteLine($"Время ожидания в очереди составит часов {wholeHours} и {remainingMinutes} минут.");
             Console.ReadKey();
-            Console.Clear(); 
+            Console.Clear();
         }
     }
 }
